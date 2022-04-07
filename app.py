@@ -7,7 +7,6 @@ import forum_likes as fl
 import users as use
 from flask import Flask, request, Response
 import json
-import dbinteractions as db
 import sys
 
 app = Flask(__name__)
@@ -57,7 +56,7 @@ def insert_post():
         login_token = request.json['login_token']
         content = request.json['content']
         header = request.json['header']
-        success, id = fpo.insert_post(login_token, content, header)
+        success, id = fpo.insert_forum_post(login_token, content, header)
         if(success):
             post_json = json.dumps({
                 "login_token":login_token,
